@@ -8,6 +8,15 @@ var money = process.argv.splice(2);
 
 var calculBottle = function(money){
 
+  var totalBottle = 0;
+  var fullBottle = 0;
+  var emptyBottle = 0;
+  var caps = 0;
+  var change = 0;
+
+  var emptyBottleCount = 0;
+  var capsCount = 0;
+
   function oneFullBottle(){
     fullBottle--;
     totalBottle ++;
@@ -16,21 +25,16 @@ var calculBottle = function(money){
   }
 
   function twoEmptyBottle(){
-    fullBottle++
+    fullBottle++;
     emptyBottle = emptyBottle - 2;
+    emptyBottleCount++;
   }
 
   function fourCaps(){
-    fullBottle++
+    fullBottle++;
     caps = caps - 4;
+    capsCount++;
   }
-
-  var totalBottle = 0;
-  var fullBottle = 0;
-  var emptyBottle = 0;
-  var caps = 0;
-
-  var change = 0;
 
   if(money % 2 === 0){
     fullBottle = money / 2;
@@ -52,14 +56,17 @@ var calculBottle = function(money){
       fourCaps();
     }
     if(fullBottle === 0 && emptyBottle < 2 && caps < 4){
-      return totalBottle;
+      console.log("Total Bottles: " + totalBottle);
+      console.log("   Empty Bottles: " + emptyBottleCount);
+      console.log("   Caps: " +capsCount);
+      break;
     }
   }
 }
 
-console.log(calculBottle(10));
-console.log(calculBottle(20));
-console.log(calculBottle(30));
-console.log(calculBottle(40));
+calculBottle(10);
+calculBottle(20);
+calculBottle(30);
+calculBottle(40);
 
-console.log(calculBottle(money));
+calculBottle(money);
