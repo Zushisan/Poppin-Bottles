@@ -56,9 +56,21 @@ var calculBottle = function(money){
       fourCaps();
     }
     if(fullBottle === 0 && emptyBottle < 2 && caps < 4){
+
+      var remainEmptyBottle = totalBottle % 2;
+      var remainCaps = totalBottle % 4;
+
+
       console.log("Total Bottles: " + totalBottle);
-      console.log("   Empty Bottles: " + emptyBottleCount);
-      console.log("   Caps: " +capsCount);
+      console.log("Remaining empty Bottles: " + remainEmptyBottle);
+      console.log("Remaining Caps: " + remainCaps);
+      console.log("Redeemed Empty Bottles: " + emptyBottleCount);
+      console.log("Redeemed Caps: " + capsCount);
+
+      if(change > 0){
+        console.log("The customer was also given back $" + change +" in change.")
+      }
+      console.log("\n");
       break;
     }
   }
