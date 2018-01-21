@@ -4,7 +4,7 @@
 // For every four bottle caps, you get one free full bottle.
 // A pop bottle cost $2
 
-
+var money = process.argv.splice(2);
 
 var calculBottle = function(money){
 
@@ -30,10 +30,20 @@ var calculBottle = function(money){
   var emptyBottle = 0;
   var caps = 0;
 
-  fullBottle = money / 2;
+  var change = 0;
+
+  if(money % 2 === 0){
+    fullBottle = money / 2;
+  }
+  else {
+    change = money % 2;
+    fullBottle = (money - change) / 2;
+  }
+
   for(var i = 1; i > 0; i++){
     if (fullBottle >= 1){
       oneFullBottle();
+      i = 0;
     }
     if (emptyBottle >= 2){
       twoEmptyBottle();
@@ -51,3 +61,5 @@ console.log(calculBottle(10));
 console.log(calculBottle(20));
 console.log(calculBottle(30));
 console.log(calculBottle(40));
+
+console.log(calculBottle(money));
